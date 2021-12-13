@@ -12,7 +12,6 @@ import numpy as np
 from time import sleep
 
 # Definir o IP do servidor de acordo com as configurações da máquina (1)
-#HOST = """YOUR IP ADDRESS"""
 HOST = '0.0.0.0'
 PORT = 44433
 
@@ -33,9 +32,9 @@ def main():
         sys.exit(0)
 
     # Carregar o modelo de Inteligência Artificial (2)
-    #"""
+    """
     model = load_model('my_model.h5')
-    #"""
+    """
 
     print('Waiting for a Connection..')
     server_socket.listen(5)
@@ -69,24 +68,24 @@ def threaded_client(connection, address, model):
     nowTime = datetime.datetime.now().strftime('%m-%d-%H-%M-%S')
     filename = 'wav_folder/audio_file_' + str(nowTime) + '.wav'
     # Transformar o ficheiro 3gp em wav para ser aceite pelo modelo (3)
-    #"""
+    """
     os.system('ffmpeg -i audio_file.3gp ' + filename) 
-    #"""
+    """
 
     # Avaliar por IA se o som recebido é de facto uma tosse através da 
     # função getCoughProbability() (4)
-    #"""
+    """
     probability = getCoughProbability(filename, model)
     print("Detected coughing with " + str(probability) + "% sure.")
-    #"""
+    """
 
     # Definir o limite aceitável de probabilidade de tosse e enviar
     # mensagem para todos os clientes ligados se for tosse (5)
-    #"""
+    """
     if probability >= 0.5:
         for i in range(len(sending_sock_list)):
             q.put(address[0])
-    #"""
+    """
 
 def sending_thread(address):
     sending_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -99,7 +98,7 @@ def sending_thread(address):
 
     # Enviar mensagem para todos os clientes ligados ao servidor
     # com exceção do cliente que enviou o audio (6)
-    #"""
+    """
     while True:
         returned_address = q.get()
         if (returned_address == address[0]):
@@ -107,7 +106,7 @@ def sending_thread(address):
             continue
         sending_socket.sendall(str.encode('notif'))
         sleep(5)
-    #"""
+    """
 
 def getCoughProbability(filename, model):
     # Conjunto de passos para preparar o ficheiro para a predição no
