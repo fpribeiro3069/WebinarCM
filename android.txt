@@ -1,0 +1,3 @@
+title=MainApp
+author=Caprilla
+orientation=portrait
