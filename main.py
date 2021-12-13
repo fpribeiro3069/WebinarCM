@@ -32,17 +32,10 @@ class ListeningThread(threading.Thread):
                     break
                 
                 # Receber a mensagem do servidor e transmitir ao user a notificacao (7)
-                """
-                data = data.decode("utf-8")
-                if data == 'notif':
-                    self.label.text = "Server detected coughing in the area..."
-                    try:
-                        self.notif_handler.notify(title="Alert", message="Someone coughed nearby! Watch out!")
-                        vibrator.vibrate(time=1)
-                    except:
-                        self.label.text = "Erro a mandar notificacao"
+                
 
-                """
+
+                
             connection.close()
             self.label.text = "Server disconnected"
                 
@@ -53,30 +46,18 @@ class MyGrid(GridLayout):
         super(MyGrid, self).__init__(**kwargs)
 
         # Criar UI (1)
-        """
-        self.rows = 2
-        self.state = "stopped"
-
-        self.label = Label(text="Default Text")
-        self.add_widget(self.label)
-
-        self.button = Button(text="Record!")
-        self.add_widget(self.button)
+        
 
 
-        self.button.bind(on_press=partial(self.toogle_recording, [self.button, self.label]))
-        """
+
+
 
         # Definir o agente de geracao de notificacoes da libray plyer (6)
-        """
-        self.notif_handler = notification
-        """
+        
+
 
         # Ativar a thread que fica a escuta por respostas do servidor (8)
-        """
-        listening_thread = ListeningThread(self.label, self.notif_handler)
-        listening_thread.start()
-        """
+        
         
     def toogle_recording(self, instance, *args):
         if self.state == "stopped":
@@ -85,44 +66,23 @@ class MyGrid(GridLayout):
             self.button.disabled = True
 
             # Capturar audio atraves da library plyer (2)
-            """
-            audio.start()
-            """
+            
             # Reativar o botao dentro de 4 segundos (3)
-            """
-            Clock.schedule_once(self.enable_button, 4)
-            """
+            
             
         else:
             self.button.text = "Start Recording!"
             self.state = "stopped"
 
             # Parar a captura de som (4)
-            """
-            audio.stop()
-            """
+            
 
             # Conectar ao servidor e enviar o ficheiro de audio para avaliacao (5)
-            """
-            self.HOST = '192.168.1.88'  # The server's hostname or IP address
-            self.PORT = 44433
-            self.sending_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-            self.sending_socket.connect((self.HOST, self.PORT))
+            
 
-            file_path = audio.file_path
-            with open(file_path, 'rb') as file:
-                bytes = file.read(1024)
-                while bytes:
-                    self.sending_socket.send(bytes)
-                    bytes = file.read(1024)
-            self.sending_socket.close()
-            """
         
-        # Reativar o botao dentro de 4 segundos (3)
-    """
-    def enable_button(self, dt):
-        self.button.disabled = False
-    """
+    # Reativar o botao dentro de 4 segundos (3)
+    
         
 
 class KivyApp(App):
