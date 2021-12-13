@@ -14,8 +14,13 @@ Para conseguir acompanhar a construção durante o webinar é necessário instal
     4. Clicar no botão > Variáveis de ambiente...
     5. Duplo clique na variável > Path
     6. Adicionar um novo registo e dar-lhe o path absoluto da pasta bin da pasta extraída do zip
-3. Instalar todas as dependências do programa através de `pip install -r requirements`
+3. Instalar todas as dependências do programa através de `pip install -r requirements.txt`
     1. Sugere-se que crie primeiro um ambiente virtual para não instalar diretamente as dependências para a sua instalação global do python através de `python -m venv venv`
     2. Para entrar no ambiente virtual basta inserir na linha de comandos no diretório que contêm a pasta `venv` o comando: `.\venv\Scripts\activate`
-4. Para testar através do seu telemóvel android tem que instalar a aplicação de debug do Kivy através da AppStore. O nome da aplicação é > Kivy Launcher
-![AppStore_kivy_launcher](kivy_launcher.png)
+    3. Dentro do ambiente virtual, já pode fazer `pip install -r requirements.txt`
+4. Para testar através do seu telemóvel android tem que instalar a aplicação de debug do Kivy através da AppStore.
+
+![AppStore_kivy_launcher](kivy_launcher.png "Aplicação na AppStore")
+
+5. Para conseguir testar a aplicação, é ncessário transferir os ficheiros python para o Kivy Launcher logo precisa de uma ferramenta de acesso a memória.
+Pode utilizar um cabo USB ou transferir um servidor ftp para o telemóvel
